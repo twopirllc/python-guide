@@ -8,7 +8,7 @@ Code Style
 .. image:: /_static/photos/33907150054_5ee79e8940_k_d.jpg
 
 If you ask Python programmers what they like most about Python, they will
-often cite its high readability.  Indeed, a high level of readability
+often cite its high readability. Indeed, a high level of readability
 is at the heart of the design of the Python language, following the
 recognized fact that code is read much more often than it is written.
 
@@ -226,7 +226,7 @@ but making a public property private might be a much harder operation.
 Returning values
 ~~~~~~~~~~~~~~~~
 
-When a function grows in complexity it is not uncommon to use multiple return
+When a function grows in complexity, it is not uncommon to use multiple return
 statements inside the function's body. However, in order to keep a clear intent
 and a sustainable readability level, it is preferable to avoid returning
 meaningful values from many output points in the body.
@@ -496,6 +496,14 @@ Then run it on a file or series of files to get a report of any violations.
     optparse.py:472:29: E221 multiple spaces before operator
     optparse.py:544:21: W601 .has_key() is deprecated, use 'in'
 
+Auto-Formatting
+~~~~~~~~~~~~~~~
+
+There are several auto-formatting tools that can reformat your code,
+in order to comply with PEP 8.
+
+**autopep8**
+
 The program `autopep8 <https://pypi.org/project/autopep8/>`_ can be used to
 automatically reformat code in the PEP 8 style. Install the program with:
 
@@ -513,6 +521,49 @@ Excluding the ``--in-place`` flag will cause the program to output the modified
 code directly to the console for review. The ``--aggressive`` flag will perform
 more substantial changes and can be applied multiple times for greater effect.
 
+**yapf**
+
+While autopep8 focuses on solving the PEP 8 violations, `yapf <https://github.com/google/yapf>`_
+tries to improve the format of your code aside from complying with PEP 8.
+This formatter aims at providing as good looking code as a programmer who
+writes PEP 8 compliant code.
+It gets installed with:
+
+.. code-block:: console
+
+    $ pip install yapf
+
+Run the auto-formatting of a file with:
+
+.. code-block:: console
+
+    $ yapf --in-place optparse.py
+
+Similar to autopep8, running the command without the ``--in-place`` flag will
+output the diff for review before applying the changes.
+
+**black**
+
+The auto-formatter `black <https://github.com/psf/black>`_ offers an
+opinionated and deterministic reformatting of your code base.
+Its main focus lies in providing a uniform code style without the need of
+configuration throughout its users. Hence, users of black are able to forget
+about formatting altogether. Also, due to the deterministic approach minimal
+git diffs with only the relevant changes are guaranteed. You can install the
+tool as follows:
+
+.. code-block:: console
+
+    $ pip install black
+
+A python file can be formatted with:
+
+.. code-block:: console
+
+    $ black optparse.py
+
+Adding the ``--diff`` flag provides the code modification for review without
+direct application.
 
 ***********
 Conventions
@@ -588,12 +639,12 @@ Short Ways to Manipulate Lists
 
 `List comprehensions
 <http://docs.python.org/tutorial/datastructures.html#list-comprehensions>`_
-provide a powerful, concise way to work with lists.
+provides a powerful, concise way to work with lists.
 
 `Generator expressions
 <http://docs.python.org/tutorial/classes.html#generator-expressions>`_
-follow almost the same syntax as list comprehensions but return a generator
-instead of a list. 
+follows almost the same syntax as list comprehensions but return a generator
+instead of a list.
 
 Creating a new list requires more work and uses more memory. If you are just going
 to loop through the new list, prefer using an iterator instead.
@@ -617,7 +668,7 @@ example if you need to use the result multiple times.
 
 
 If your logic is too complicated for a short list comprehension or generator
-expression, consider using a generator function instead of returning a list. 
+expression, consider using a generator function instead of returning a list.
 
 **Good**:
 
@@ -637,7 +688,7 @@ expression, consider using a generator function instead of returning a list.
         yield current_batch
 
 
-Never use a list comprehension just for its side effects. 
+Never use a list comprehension just for its side effects.
 
 **Bad**:
 
@@ -650,7 +701,7 @@ Never use a list comprehension just for its side effects.
 .. code-block:: python
 
     for x in sequence:
-        print(x) 
+        print(x)
 
 
 Filtering a list
@@ -677,7 +728,7 @@ Don't make multiple passes through the list.
 
 **Good**:
 
-Use a list comprehension or generator expression. 
+Use a list comprehension or generator expression.
 
 .. code-block:: python
 
@@ -778,7 +829,7 @@ a white space added to the end of the line, after the backslash, will break the
 code and may have unexpected results.
 
 A better solution is to use parentheses around your elements. Left with an
-unclosed parenthesis on an end-of-line the Python interpreter will join the
+unclosed parenthesis on an end-of-line, the Python interpreter will join the
 next line until the parentheses are closed. The same behavior holds for curly
 and square braces.
 

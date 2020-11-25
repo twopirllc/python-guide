@@ -9,8 +9,8 @@ Testing Your Code
 Testing your code is very important.
 
 Getting used to writing testing code and running this code in parallel is now
-considered a good habit. Used wisely, this method helps you define more
-precisely your code's intent and have a more decoupled architecture.
+considered a good habit. Used wisely, this method helps to define your
+code's intent more precisely and have a more decoupled architecture.
 
 Some general rules of testing:
 
@@ -248,35 +248,6 @@ simple INI-style configuration file.
     `tox <https://tox.readthedocs.io/en/latest/>`_
 
 
-Unittest2
----------
-
-unittest2 is a backport of Python 2.7's unittest module which has an improved
-API and better assertions over the one available in previous versions of Python.
-
-If you're using Python 2.6 or below, you can install it with pip:
-
-.. code-block:: console
-
-    $ pip install unittest2
-
-You may want to import the module under the name unittest to make porting code
-to newer versions of the module easier in the future
-
-.. code-block:: python
-
-    import unittest2 as unittest
-
-    class MyTest(unittest.TestCase):
-        ...
-
-This way if you ever switch to a newer Python version and no longer need the
-unittest2 module, you can simply change the import in your test module without
-the need to change any other code.
-
-    `unittest2 <http://pypi.org/project/unittest2>`_
-
-
 mock
 ----
 
@@ -323,6 +294,6 @@ always returns the same result (but only for the duration of the test).
         # get_search_results runs a search and iterates over the result
         self.assertEqual(len(myapp.get_search_results(q="fish")), 3)
 
-Mock has many other ways you can configure it and control its behavior.
+Mock has many other ways with which you can configure and control its behaviour.
 
     `mock <http://www.voidspace.org.uk/python/mock/>`_
